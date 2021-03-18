@@ -10,5 +10,14 @@ fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b
     })
     .then(function (data) {
       console.log(data);
+    // loop over data to get Temp, Wind, Humidity, UVindex
+    // for loop
+    for(var i = 0; i < data.data.length; i++){
+        console.log(data.data[i].city_name)
+        console.log(data.data[i].wind_spd)
+    }
     });
 
+
+    // create , text ,  appehend
+    
