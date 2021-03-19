@@ -22,14 +22,14 @@ fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b
 var testSearchUrl = 'https://www.mapquestapi.com/search/v4/place?location=-74.95590458465354%2C40.26624146333869&sort=relevance&feedback=false&key=9UthBdDGZK1MsiEFy48XWw3fWtC01AAJ&pageSize=5&q=parks'
 var testLocationUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=philadelphia,pa';
 // can be set as user input once we get everything connected
-var testInput = 'Philadelphia, PA';
+var testInput = document.querySelector("#input-field");
 // some dude on stackoverflow says this is how to remove spaces, seems to work
-var testLocation = testInput.replace(/\s+/g, '');
+// var testLocation = testInput.replace(/\s+/g, '');
 var searchButton = document.querySelector('#search-button');
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
   
-  console.log("Test")
+  console.log(testInput.value);
   fetch('https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=' + testLocation)
   .then(function (response) {
     return response.json();
@@ -61,9 +61,9 @@ function getParks(lon, lat){
   })
   }
 
-  searchButton.addEventListener("click", getLocation())
+  searchButton.addEventListener("click", getLocation)
 
-    
+   
   
 
 //can set up an event listener for click, just running on page load to test
