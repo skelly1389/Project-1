@@ -9,27 +9,33 @@ fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      console.log(data.data[0]);
     // loop over data to get Temp, Wind, Humidity, UVindex
     // for loop
     for(var i = 0; i < data.data.length; i++){
-        console.log(data.data[i].city_name)
         console.log(data.data[i].wind_spd)
+        console.log(data.data[i].temp);
+        console.log(data.data[i].rh)
+        console.log(data.data[i].precip)
+        console.log(data.data[i].uv)
     }
-    });
+    })
+
+
+
+
 
 // known working api urls for testing functions
 var testSearchUrl = 'https://www.mapquestapi.com/search/v4/place?location=-74.95590458465354%2C40.26624146333869&sort=relevance&feedback=false&key=9UthBdDGZK1MsiEFy48XWw3fWtC01AAJ&pageSize=5&q=parks'
 var testLocationUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=philadelphia,pa';
+var test
 // can be set as user input once we get everything connected
-var testInput = document.querySelector("#input-field");
+var testInput = 'Philadelphia, PA';
 // some dude on stackoverflow says this is how to remove spaces, seems to work
-// var testLocation = testInput.replace(/\s+/g, '');
-var searchButton = document.querySelector('#search-button');
+var testLocation = testInput.replace(/\s+/g, '');
+
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
-  
-  console.log(testInput.value);
   fetch('https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=' + testLocation)
   .then(function (response) {
     return response.json();
@@ -44,8 +50,23 @@ function getLocation(){
     var userLat = data.results[0].locations[0].latLng.lat;
     //plugs the coords into mapquest search places api
     getParks(userLon, userLat)
+    getWeather(userLon, userLat)
   })
   }
+  
+
+  function getWeather(){
+    fetch("https://api.weatherbit.io/v2.0/current?" + testLocation + "&key=b5c97ec4269348f59f7363c259205e69" )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+    getWeather(userLon, userLat)
+    })
+  }
+
+  document.getElementById("weatherCard").appendChild(data.data[i].temp;);
+
 
 //searches for 5 parks near coords, sorts by relevance for now because the filter is a query and not super specific
 function getParks(lon, lat){
@@ -65,11 +86,6 @@ function getParks(lon, lat){
   })
   }
 
-  searchButton.addEventListener("click", getLocation)
-
-   
-  
-
 //can set up an event listener for click, just running on page load to test
- 
+getLocation();    
 
