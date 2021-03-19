@@ -29,9 +29,11 @@ var test
 var testInput = 'Philadelphia, PA';
 // some dude on stackoverflow says this is how to remove spaces, seems to work
 var testLocation = testInput.replace(/\s+/g, '');
-
+var searchButton = document.querySelector('#search-button');
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
+  
+  console.log("Test")
   fetch('https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=' + testLocation)
   .then(function (response) {
     return response.json();
@@ -82,6 +84,11 @@ function getParks(lon, lat){
   })
   }
 
+  searchButton.addEventListener("click", getLocation())
+
+    
+  
+
 //can set up an event listener for click, just running on page load to test
-getLocation();    
+ 
 
