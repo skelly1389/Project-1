@@ -13,14 +13,16 @@ fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b
     // loop over data to get Temp, Wind, Humidity, UVindex
     // for loop
     for(var i = 0; i < data.data.length; i++){
-        console.log(data.data[i].city_name)
         console.log(data.data[i].wind_spd)
         console.log(data.data[i].temp);
+        console.log(data.data[i].rh)
+        console.log(data.data[i].precip)
+        console.log(data.data[i].uv)
     }
     })
 
 
-    ololololo
+
 
 
 // known working api urls for testing functions
@@ -55,16 +57,11 @@ function getLocation(){
       return response.json();
     })
     .then(function (data) {
-      //grabs the weather from the api call
-        var wind_spd = data.data[i].wind_spd;
-        var rh = data.data[i].rh;
-        var uv = data.data[i].uv;
-        var temp = data.data[i].temp;
-        getWeather(userLon, userLat)
+    getWeather(userLon, userLat)
     })
   }
 
-  document.getElementById("myList").appendChild(data.data[i].temp;);
+  document.getElementById("weatherCard").appendChild(data.data[i].temp;);
 
 
 //searches for 5 parks near coords, sorts by relevance for now because the filter is a query and not super specific
