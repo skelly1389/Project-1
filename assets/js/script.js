@@ -22,9 +22,6 @@ fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b
     })
 
 
-
-
-
 // known working api urls for testing functions
 var testSearchUrl = 'https://www.mapquestapi.com/search/v4/place?location=-74.95590458465354%2C40.26624146333869&sort=relevance&feedback=false&key=9UthBdDGZK1MsiEFy48XWw3fWtC01AAJ&pageSize=5&q=parks'
 var testLocationUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=philadelphia,pa';
@@ -58,10 +55,13 @@ function getLocation(){
     })
     .then(function (data) {
     getWeather(userLon, userLat)
+    document.getElementById("weatherCard").appendChild(data.data[i].temp);
+    document.getElementById("weatherCard").appendChild(data.data[i].wind_spd);
+    document.getElementById("weatherCard").appendChild(data.data[i].rh);
+    document.getElementById("weatherCard").appendChild(data.data[i].precip);
+    document.getElementById("weatherCard").appendChild(data.data[i].uv);
     })
   }
-
-  document.getElementById("weatherCard").appendChild(data.data[i].temp;);
 
 
 //searches for 5 parks near coords, sorts by relevance for now because the filter is a query and not super specific
