@@ -18,7 +18,7 @@ fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b
         console.log(data.data[i].temp);
     }
     });
-
+gnhbehb
 
 
 // known working api urls for testing functions
