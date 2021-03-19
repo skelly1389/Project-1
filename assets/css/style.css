@@ -26,3 +26,14 @@ html {
     top:0;
     right:1000;
 }
+
+.subtitle {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    
+}
+
+.title{
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 60px;
+}
