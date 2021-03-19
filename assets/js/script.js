@@ -35,6 +35,10 @@ function getLocation(){
     return response.json();
   })
   .then(function (data) {
+    if(data.results[0].locations.length === 0){
+      alert('enter a city name');
+      location.reload();
+    }
     //grabs the coordinates from the api call
     var userLon = data.results[0].locations[0].latLng.lng;
     var userLat = data.results[0].locations[0].latLng.lat;
