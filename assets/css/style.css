@@ -54,5 +54,17 @@ body {
     display: inline-flex;
     border-style:none;
     margin-top: 20px;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+  
+}
+.parkresults{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 30px;
+    
 }
