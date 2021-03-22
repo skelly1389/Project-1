@@ -16,10 +16,17 @@ html {
     width: 100%;
     background-color: #f8ef42;
     background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
-    background-attachment: fixed;
     
 
 }
+.parkresults {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradeint(315deg, #f8ef42 0%, #0fd64f 74%);
+    background-attachment: fixed;
+
+}
+
 
 .logo {
     position:absolute;
