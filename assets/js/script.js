@@ -11,8 +11,9 @@ var weatherDisplay = document.querySelector('.weather-card');
 
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
+  // resets parks so it doesn't keep printing when new search entered
   parksDisplay.innerHTML = " ";
-  console.log(testInput.value)
+  // removes white space in search input
   var testLocation = testInput.value.replace(/\s+/g, '');
   fetch('https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&maxResults=1&location=' + testLocation)
   .then(function (response) {
@@ -37,32 +38,45 @@ function getLocation(){
     .then(function (response) {
       return response.json()
       .then(function(data) {
+      //writes weather data to html
       var weatherTemp = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherTemp.classList.add('');
       var text = document.createTextNode('Temperature: ' + parseInt(data.data[0].temp) + '°F');
       weatherTemp.appendChild(text);
       weatherDisplay.appendChild(weatherTemp);
       
-      var weatherTemp = document.createElement('p');
+      var weatherWind = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherWind.classList.add('');
       var text = document.createTextNode('Wind: ' + parseInt(data.data[0].wind_spd) + 'MPH');
-      weatherTemp.appendChild(text);
-      weatherDisplay.appendChild(weatherTemp);
+      weatherWind.appendChild(text);
+      weatherDisplay.appendChild(weatherWind);
 
-      var weatherTemp = document.createElement('p');
+      var weatherHum = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherHum.classList.add('');
       var text = document.createTextNode('Humidity: ' + parseInt(data.data[0].rh) + '%');
-      weatherTemp.appendChild(text);
-      weatherDisplay.appendChild(weatherTemp);
+      weatherHum.appendChild(text);
+      weatherDisplay.appendChild(weatherHum);
 
-      var weatherTemp = document.createElement('p');
+      var weatherUv = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherUv.classList.add('');
       var text = document.createTextNode('UV: ' + parseInt(data.data[0].uv));
-      weatherTemp.appendChild(text);
-      weatherDisplay.appendChild(weatherTemp);
+      weatherUv.appendChild(text);
+      weatherDisplay.appendChild(weatherUv);
 
-      var weatherTemp = document.createElement('p');
+      var weatherPrecip = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherPrecip.classList.add('');
       var text = document.createTextNode('Precipitation: ' + parseInt(data.data[0].precip));
-      weatherTemp.appendChild(text);
-      weatherDisplay.appendChild(weatherTemp);
+      weatherPrecip.appendChild(text);
+      weatherDisplay.appendChild(weatherPrecip);
 
       var curImg = document.createElement('img');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // curImg.classList.add('');
       curImg.src = ('https://www.weatherbit.io/static/img/icons/' + data.data[0].weather.icon + '.png');
       weatherDisplay.appendChild(curImg);
       })}
