@@ -11,8 +11,9 @@ var weatherDisplay = document.querySelector('.weather-card');
 
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
+  // resets parks so it doesn't keep printing when new search entered
   parksDisplay.innerHTML = " ";
-  console.log(testInput.value)
+  // removes white space in search input
   var testLocation = testInput.value.replace(/\s+/g, '');
   fetch('https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&maxResults=1&location=' + testLocation)
   .then(function (response) {
@@ -34,16 +35,51 @@ function getLocation(){
 
   // grabs weather data and displays them on the page
   function getWeather(lon,lat) {
+    weatherDisplay.innerHTML=" "
     fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
     .then(function (response) {
       return response.json()
       .then(function(data) {
+      //writes weather data to html
       var weatherTemp = document.createElement('p');
-
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherTemp.classList.add('');
       var text = document.createTextNode('Temperature: ' + parseInt(data.data[0].temp) + '°F');
       weatherTemp.appendChild(text);
       weatherDisplay.appendChild(weatherTemp);
+      
+      var weatherWind = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherWind.classList.add('');
+      var text = document.createTextNode('Wind: ' + parseInt(data.data[0].wind_spd) + 'MPH');
+      weatherWind.appendChild(text);
+      weatherDisplay.appendChild(weatherWind);
+
+      var weatherHum = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      
+      // weatherHum.classList.add('');
+      var text = document.createTextNode('Humidity: ' + parseInt(data.data[0].rh) + '%');
+      weatherHum.appendChild(text);
+      weatherDisplay.appendChild(weatherHum);
+
+      var weatherUv = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherUv.classList.add('');
+      var text = document.createTextNode('UV: ' + parseInt(data.data[0].uv));
+      weatherUv.appendChild(text);
+      weatherDisplay.appendChild(weatherUv);
+
+      var weatherPrecip = document.createElement('p');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // weatherPrecip.classList.add('');
+      var text = document.createTextNode('Precipitation: ' + parseInt(data.data[0].precip));
+      weatherPrecip.appendChild(text);
+      weatherDisplay.appendChild(weatherPrecip);
+
       var curImg = document.createElement('img');
+      //ADD BULMA AND STYLING CLASSES HERE
+      // curImg.classList.add('');
       curImg.src = ('https://www.weatherbit.io/static/img/icons/' + data.data[0].weather.icon + '.png');
       weatherDisplay.appendChild(curImg);
       })}
@@ -65,20 +101,12 @@ function getParks(lon, lat) {
       //can use this link in an iframe if we want or a redirect link if that doesn't work out
       console.log('iframe src: https://www.mapquest.com/' + data.results[i].slug);
       // prints the park names to a test div
-      var pName = data.results[i].name;
-      var pNameHead = document.createElement('h4');
-      //ADD BULMA AND STYLING CLASSES HERE
-      document.createElement
-      pNameHead.classList.add('column');
-      var text = document.createTextNode(pName);
-      pNameHead.appendChild(text);
-      parksDisplay.appendChild(pNameHead); 
       var pSlug = data.results[i].slug;
       var pSlugFrame = document.createElement('iframe');
       //ADD STYLES TO IFRAME HERE
       pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug), "scrolling", "no")
       //ADD BULMA AND STYLING CLASSES HERE
-      // pSlugFrame.classList.add('');
+      pSlugFrame.classList.add('iframes');
       parksDisplay.appendChild(pSlugFrame);
     }
   })
