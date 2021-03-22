@@ -59,6 +59,54 @@ function getWeather(lon, lat){
     })
   }
 
+
+  function getWeather(userLon,userLat){
+    fetch("https://api.weatherbit.io/v2.0/current?" + loc + "&key=b5c97ec4269348f59f7363c259205e69" )
+    .then(function (response) {
+      return response.json()
+      
+      function todayWeather() => {
+      var weatherTemp = document.createElement('p');
+      var text = document.createTextNode('Temperature: ' + parseInt(data.data[i].temp) + '°F');
+      temp.appendChild(text);
+      weatherTemp.appendChild(curTemp);
+      
+      var curHum = document.createElement('p');
+      var text = document.createTextNode('Humidity: ' + curW.humidity + '%');
+      curHum.appendChild(text);
+      curWeaDisp.appendChild(curHum);
+      
+      var curWs = document.createElement('p');
+      var text = document.createTextNode('Wind Speed: ' + parseInt(curW.wind_speed) + 'mph');
+      curWs.appendChild(text);
+      curWeaDisp.appendChild(curWs);
+      
+      var curUv = document.createElement('p');
+      var text = document.createTextNode('UV Index: ' + curW.uvi);
+      if(curW.uvi > 7){
+          curUv.classList.add("bg-danger");
+      }
+      if(curW.uvi < 3){
+          curUv.classList.add("bg-success");
+      }
+      else {
+          curUv.classList.add("bg-warning");
+      }
+      curUv.appendChild(text);
+      curWeaDisp.appendChild(curUv);  
+    }
+
+
+
+
+
+
+
+
+
+
+
+
   //searches for 5 parks near coords, sorts by relevance for now because the filter is a query and not super specific
 function getParks(lon, lat){
   fetch('https://www.mapquestapi.com/search/v4/place?location=' + lon + '%2C' + lat +'&sort=relevance&feedback=false&key=9UthBdDGZK1MsiEFy48XWw3fWtC01AAJ&pageSize=5&q=parks')
