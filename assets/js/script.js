@@ -28,6 +28,7 @@ var parksDisplay = document.querySelector('.parkresults');
 
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
+  parksDisplay.innerHTML = " ";
   console.log(testInput.value)
   var testLocation = testInput.value.replace(/\s+/g, '');
   fetch('https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&maxResults=1&location=' + testLocation)
@@ -84,7 +85,7 @@ function getParks(lon, lat){
       var pSlug = data.results[i].slug;
       var pSlugFrame = document.createElement('iframe');
       //ADD STYLES TO IFRAME HERE
-      pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug))
+      pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug), "scrolling", "no")
       //ADD BULMA AND STYLING CLASSES HERE
       // pSlugFrame.classList.add('');
       parksDisplay.appendChild(pSlugFrame);
