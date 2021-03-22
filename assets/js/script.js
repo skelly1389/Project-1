@@ -60,8 +60,7 @@ function getLocation(){
 //     })
 //   }
 
-
-  function getWeather(lon,lat){
+  function getWeather(lon,lat) {
     fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
     .then(function (response) {
       return response.json()
@@ -82,7 +81,8 @@ function getLocation(){
       // ADD BULMA AND STYLING CLASSES HERE
       pSlugFrame.classList.add('');
       parksDisplay.appendChild(pSlugFrame);
-      });
+      })}
+    )}
 
 
   //searches for 5 parks near coords, sorts by relevance for now because the filter is a query and not super specific
@@ -119,4 +119,4 @@ function getParks(lon, lat) {
   })
   }
 
-searchButton.addEventListener('click', getLocation)
+searchButton.addEventListener('click', getLocation) 
