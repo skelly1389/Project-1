@@ -33,7 +33,9 @@ function getLocation(){
   })
   }
 
+  // grabs weather data and displays them on the page
   function getWeather(lon,lat) {
+    weatherDisplay.innerHTML=" "
     fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
     .then(function (response) {
       return response.json()
@@ -55,6 +57,7 @@ function getLocation(){
 
       var weatherHum = document.createElement('p');
       //ADD BULMA AND STYLING CLASSES HERE
+      
       // weatherHum.classList.add('');
       var text = document.createTextNode('Humidity: ' + parseInt(data.data[0].rh) + '%');
       weatherHum.appendChild(text);
@@ -98,20 +101,12 @@ function getParks(lon, lat) {
       //can use this link in an iframe if we want or a redirect link if that doesn't work out
       console.log('iframe src: https://www.mapquest.com/' + data.results[i].slug);
       // prints the park names to a test div
-      var pName = data.results[i].name;
-      var pNameHead = document.createElement('h4');
-      //ADD BULMA AND STYLING CLASSES HERE
-      document.createElement
-      pNameHead.classList.add('column');
-      var text = document.createTextNode(pName);
-      pNameHead.appendChild(text);
-      parksDisplay.appendChild(pNameHead); 
       var pSlug = data.results[i].slug;
       var pSlugFrame = document.createElement('iframe');
       //ADD STYLES TO IFRAME HERE
       pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug), "scrolling", "no")
       //ADD BULMA AND STYLING CLASSES HERE
-      // pSlugFrame.classList.add('');
+      pSlugFrame.classList.add('iframes');
       parksDisplay.appendChild(pSlugFrame);
     }
   })
