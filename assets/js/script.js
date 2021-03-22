@@ -32,12 +32,14 @@ function getLocation(){
   })
   }
 
+  // grabs weather data and displays them on the page
   function getWeather(lon,lat) {
     fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
     .then(function (response) {
       return response.json()
       .then(function(data) {
       var weatherTemp = document.createElement('p');
+
       var text = document.createTextNode('Temperature: ' + parseInt(data.data[0].temp) + '°F');
       weatherTemp.appendChild(text);
       weatherDisplay.appendChild(weatherTemp);
