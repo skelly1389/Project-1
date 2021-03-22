@@ -41,6 +41,27 @@ function getLocation(){
       var text = document.createTextNode('Temperature: ' + parseInt(data.data[0].temp) + '°F');
       weatherTemp.appendChild(text);
       weatherDisplay.appendChild(weatherTemp);
+      
+      var weatherTemp = document.createElement('p');
+      var text = document.createTextNode('Wind: ' + parseInt(data.data[0].wind_spd) + 'MPH');
+      weatherTemp.appendChild(text);
+      weatherDisplay.appendChild(weatherTemp);
+
+      var weatherTemp = document.createElement('p');
+      var text = document.createTextNode('Humidity: ' + parseInt(data.data[0].rh) + '%');
+      weatherTemp.appendChild(text);
+      weatherDisplay.appendChild(weatherTemp);
+
+      var weatherTemp = document.createElement('p');
+      var text = document.createTextNode('UV: ' + parseInt(data.data[0].uv));
+      weatherTemp.appendChild(text);
+      weatherDisplay.appendChild(weatherTemp);
+
+      var weatherTemp = document.createElement('p');
+      var text = document.createTextNode('Precipitation: ' + parseInt(data.data[0].precip));
+      weatherTemp.appendChild(text);
+      weatherDisplay.appendChild(weatherTemp);
+
       var curImg = document.createElement('img');
       curImg.src = ('https://www.weatherbit.io/static/img/icons/' + data.data[0].weather.icon + '.png');
       weatherDisplay.appendChild(curImg);
