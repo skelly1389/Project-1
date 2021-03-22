@@ -48,56 +48,38 @@ function getLocation(){
   })
   }
   
-function getWeather(lon, lat){
-  fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
-  .then(function (response) {
-      return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    })
-  }
+// function getWeather(lon, lat){
+//   fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
+//   .then(function (response) {
+//       return response.json();
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//     })
+//   }
 
 
-  // function getWeather(userLon,userLat){
-  //   fetch("https://api.weatherbit.io/v2.0/current?" + loc + "&key=b5c97ec4269348f59f7363c259205e69" )
-  //   .then(function (response) {
-  //     return response.json()
+  function getWeather(lon,lat){
+    fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
+    .then(function (response) {
+      return response.json()
       
-      // function todayWeather() => {
-    //   var weatherTemp = document.createElement('p');
-    //   var text = document.createTextNode('Temperature: ' + parseInt(data.data[i].temp) + '°F');
-    //   temp.appendChild(text);
-    //   weatherTemp.appendChild(curTemp);
+      .then(function(data) {
+      var weatherTemp = document.createElement('p');
+      var text = document.createTextNode('Temperature: ' + parseInt(data.data[i].temp) + '°F');
+      temp.appendChild(text);
+      weatherTemp.appendChild(curTemp);
       
-    //   var curHum = document.createElement('p');
-    //   var text = document.createTextNode('Humidity: ' + curW.humidity + '%');
-    //   curHum.appendChild(text);
-    //   curWeaDisp.appendChild(curHum);
-      
-    //   var curWs = document.createElement('p');
-    //   var text = document.createTextNode('Wind Speed: ' + parseInt(curW.wind_speed) + 'mph');
-    //   curWs.appendChild(text);
-    //   curWeaDisp.appendChild(curWs);
-      
-    //   var curUv = document.createElement('p');
-    //   var text = document.createTextNode('UV Index: ' + curW.uvi);
-    //   if(curW.uvi > 7){
-    //       curUv.classList.add("bg-danger");
-    //   }
-    //   if(curW.uvi < 3){
-    //       curUv.classList.add("bg-success");
-    //   }
-    //   else {
-    //       curUv.classList.add("bg-warning");
-    //   }
-    //   curUv.appendChild(text);
-    //   curWeaDisp.appendChild(curUv);  
-    // }
-
-
-
-
+      curUv.appendChild(text);
+      curWeaDisp.appendChild(curUv);  
+      var Temp = data.data.Temp[i];
+      var pSlugFrame = document.createElement('iframe');
+      // ADD STYLES TO IFRAME HERE
+      pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug))
+      // ADD BULMA AND STYLING CLASSES HERE
+      pSlugFrame.classList.add('');
+      parksDisplay.appendChild(pSlugFrame);
+      });
 
 
   //searches for 5 parks near coords, sorts by relevance for now because the filter is a query and not super specific
