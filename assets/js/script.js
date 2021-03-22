@@ -25,6 +25,7 @@ var testInput = document.querySelector('#input-field');
 var searchButton = document.querySelector('#search-button');
 // set results to appear in test div
 var parksDisplay = document.querySelector('.parkresults');
+var weatherDisplay = document.querySelector('.weather-card');
 
 // uses mapquest api to get coordinates based on city, state or zip
 function getLocation(){
@@ -63,16 +64,17 @@ function getLocation(){
     fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
     .then(function (response) {
       return response.json()
-      
       .then(function(data) {
       var weatherTemp = document.createElement('p');
-      var text = document.createTextNode('Temperature: ' + parseInt(data.data[i].temp) + '°F');
+      var text = document.createTextNode('Temperature: ' + parseInt(data.data[0].temp) + '°F');
       temp.appendChild(text);
-      weatherTemp.appendChild(curTemp);
-      
+      weatherDisplay.appendChild(weatherTemp);
+      var curImg = document.createElement('img');
+      curImg.src = ('https://www.weatherbit.io/static/img/icons/' + data.data[0].weather.icon + '.png');
+      weatherDisplay.appendChild(curImg);
       curUv.appendChild(text);
       curWeaDisp.appendChild(curUv);  
-      var Temp = data.data.Temp[i];
+      var temp = data.data[0].temp;
       var pSlugFrame = document.createElement('iframe');
       // ADD STYLES TO IFRAME HERE
       pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug))
