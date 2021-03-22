@@ -106,7 +106,7 @@ function getParks(lon, lat) {
       //ADD STYLES TO IFRAME HERE
       pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug), "scrolling", "no")
       //ADD BULMA AND STYLING CLASSES HERE
-      pSlugFrame.classList.add('iframes');
+      // pSlugFrame.classList.add('');
       parksDisplay.appendChild(pSlugFrame);
     }
   })
