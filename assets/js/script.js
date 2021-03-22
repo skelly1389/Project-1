@@ -1,21 +1,3 @@
-
-fetch("https://api.weatherbit.io/v2.0/current?lat=39.949482&lon=-75.171883&key=b5c97ec4269348f59f7363c259205e69")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data.data[0]);
-    // loop over data to get Temp, Wind, Humidity, UVindex
-    // for loop
-    for(var i = 0; i < data.data.length; i++){
-        console.log(data.data[i].wind_spd)
-        console.log(data.data[i].temp);
-        console.log(data.data[i].rh)
-        console.log(data.data[i].precip)
-        console.log(data.data[i].uv)
-    }
-    })
-
 // known working api urls for testing functions
 var testSearchUrl = 'https://www.mapquestapi.com/search/v4/place?location=-74.95590458465354%2C40.26624146333869&sort=relevance&feedback=false&key=9UthBdDGZK1MsiEFy48XWw3fWtC01AAJ&pageSize=5&q=parks'
 var testLocationUrl = 'https://www.mapquestapi.com/geocoding/v1/address?key=mtbhj6FHUDK65jhm5YNhCClvB7GI52JS&location=philadelphia,pa';
@@ -49,16 +31,6 @@ function getLocation(){
     getWeather(userLon, userLat)
   })
   }
-  
-// function getWeather(lon, lat){
-//   fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
-//   .then(function (response) {
-//       return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//     })
-//   }
 
   function getWeather(lon,lat) {
     fetch("https://api.weatherbit.io/v2.0/current?&lat=" + lat + '&lon=' + lon + "&units=I&key=b5c97ec4269348f59f7363c259205e69")
@@ -67,20 +39,11 @@ function getLocation(){
       .then(function(data) {
       var weatherTemp = document.createElement('p');
       var text = document.createTextNode('Temperature: ' + parseInt(data.data[0].temp) + '°F');
-      temp.appendChild(text);
+      weatherTemp.appendChild(text);
       weatherDisplay.appendChild(weatherTemp);
       var curImg = document.createElement('img');
       curImg.src = ('https://www.weatherbit.io/static/img/icons/' + data.data[0].weather.icon + '.png');
       weatherDisplay.appendChild(curImg);
-      curUv.appendChild(text);
-      curWeaDisp.appendChild(curUv);  
-      var temp = data.data[0].temp;
-      var pSlugFrame = document.createElement('iframe');
-      // ADD STYLES TO IFRAME HERE
-      pSlugFrame.setAttribute("src", ('https://www.mapquest.com/' + pSlug))
-      // ADD BULMA AND STYLING CLASSES HERE
-      pSlugFrame.classList.add('');
-      parksDisplay.appendChild(pSlugFrame);
       })}
     )}
 
