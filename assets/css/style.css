@@ -4,6 +4,9 @@
     --sky-blue: #0089F2;
     --teal: #8FE0FE;
     --green: #669277;
+    --yellow: #f8ef42;
+    --lime-green: #0fd64f; 
+
 
 } 
 
@@ -12,10 +15,18 @@ html {
 }
 
 body {
-
-    background-color: #f8ef42;
-    background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
+    height: 100vh;
+    background-color: var(--yellow);
+    background-image: linear-gradient(315deg, var(--yellow) 0%, var(--lime-green) 74%);
 }
+.parkresults {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(315deg, var(--yellow) 0%, var(--lime-green) 74%);
+    
+    
+}
+
 
 .logo {
     position:absolute;
