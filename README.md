@@ -21,9 +21,9 @@
 
 To check the project we worked on click on the links below: 
 
-GitHub: https://github.com/NBP77/Project-1
+GitHub: https://github.com/skelly1389/Project-1
 
-GitHub pages: https://nbp77.github.io/Project-1/ 
+GitHub pages: https://skelly1389.github.io/Project-1/ 
 
 ## Usage:
 
